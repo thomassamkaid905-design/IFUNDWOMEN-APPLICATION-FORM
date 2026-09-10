@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>IFundWomen Funding Application</title>
+<title>Funding Application</title>
 
 <style>
 *, *::before, *::after {
@@ -13,7 +13,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
   background-color: #f4f7fb;
   color: #17233a;
   line-height: 1.5;
@@ -23,18 +24,18 @@ body {
   background: #193f78;
   color: #ffffff;
   text-align: center;
-  padding: 40px 20px;
+  padding: 48px 20px;
 }
 
 .header h1 {
-  margin: 0 0 8px;
-  font-size: 32px;
+  margin: 0 0 10px;
+  font-size: 34px;
   font-weight: 700;
 }
 
 .header p {
   margin: 0;
-  font-size: 16px;
+  font-size: 17px;
   opacity: 0.9;
 }
 
@@ -53,25 +54,22 @@ body {
 
 .application-title {
   text-align: center;
-  color: #0d1b2a;
-  font-size: 28px;
-  font-weight: 700;
-  margin: 0 0 6px;
+  color: #193f78;
+  font-size: 30px;
+  margin: 0 0 8px;
 }
 
 .application-subtitle {
   text-align: center;
   color: #667085;
-  font-size: 15px;
-  margin: 0 0 25px;
+  margin: 0 0 30px;
 }
 
 .section-title {
   color: #193f78;
-  font-size: 20px;
-  font-weight: 700;
-  margin: 30px 0 15px;
-  padding-bottom: 8px;
+  font-size: 22px;
+  margin: 35px 0 15px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #d9dee7;
 }
 
@@ -88,38 +86,32 @@ body {
 label {
   display: block;
   font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 6px;
-  color: #17233a;
+  margin-bottom: 8px;
 }
 
-label span.required {
-  color: #e53e3e;
-}
-
-input, select, textarea {
+input,
+select,
+textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px;
   border: 1px solid #cbd4e0;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 16px;
   background-color: #ffffff;
   color: #17233a;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input::placeholder, textarea::placeholder {
-  color: #a0aec0;
-}
-
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: #2868c7;
   box-shadow: 0 0 0 3px rgba(40, 104, 199, 0.15);
 }
 
 textarea {
-  min-height: 120px;
+  min-height: 130px;
   resize: vertical;
 }
 
@@ -127,19 +119,18 @@ textarea {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  margin: 20px 0;
+  margin: 22px 0;
 }
 
 .checkbox-group input[type="checkbox"] {
   width: auto;
-  margin-top: 3px;
+  margin-top: 4px;
   cursor: pointer;
 }
 
 .checkbox-group label {
   margin: 0;
   font-weight: 400;
-  font-size: 14px;
   line-height: 1.5;
   cursor: pointer;
 }
@@ -169,6 +160,16 @@ button[type="submit"]:hover {
   font-size: 13px;
 }
 
+.disclaimer {
+  margin-top: 25px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f4f7fb;
+  color: #687386;
+  font-size: 12px;
+  text-align: center;
+}
+
 @media (max-width: 650px) {
   .row {
     grid-template-columns: 1fr;
@@ -180,11 +181,11 @@ button[type="submit"]:hover {
   }
 
   .header h1 {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .application-title {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
 </style>
@@ -193,7 +194,7 @@ button[type="submit"]:hover {
 <body>
 
 <header class="header">
-  <h1>IFundWomen Funding Application</h1>
+  <h1>Funding Application</h1>
   <p>Business funding application for consideration</p>
 </header>
 
@@ -201,17 +202,28 @@ button[type="submit"]:hover {
   <div class="card">
 
     <h2 class="application-title">Submit Your Application</h2>
+
     <p class="application-subtitle">
-      Complete the form below to be considered for funding.
+      Complete the form below to submit your business funding request.
     </p>
 
-    <form action="https://formspree.io/f/myeylozy" method="POST">
+    <!-- Formspree receives the application -->
+    <form
+      action="https://formspree.io/f/myeylozy"
+      method="POST">
+
+      <!-- Redirect applicant to your own confirmation page -->
+      <input
+        type="hidden"
+        name="_next"
+        value="https://kaid905-design.github.io/IFUNDWOMEN-APPLICATION-FORM/thank-you.html">
 
       <h3 class="section-title">Applicant Information</h3>
 
       <div class="row">
+
         <div class="form-group">
-          <label for="firstName">First Name <span class="required">*</span></label>
+          <label for="firstName">First Name *</label>
           <input
             id="firstName"
             name="first_name"
@@ -221,7 +233,7 @@ button[type="submit"]:hover {
         </div>
 
         <div class="form-group">
-          <label for="lastName">Last Name <span class="required">*</span></label>
+          <label for="lastName">Last Name *</label>
           <input
             id="lastName"
             name="last_name"
@@ -229,10 +241,11 @@ button[type="submit"]:hover {
             placeholder="Enter your last name"
             required>
         </div>
+
       </div>
 
       <div class="form-group">
-        <label for="email">Email Address <span class="required">*</span></label>
+        <label for="email">Email Address *</label>
         <input
           id="email"
           name="email"
@@ -242,7 +255,7 @@ button[type="submit"]:hover {
       </div>
 
       <div class="form-group">
-        <label for="phone">Phone Number <span class="required">*</span></label>
+        <label for="phone">Phone Number *</label>
         <input
           id="phone"
           name="phone"
@@ -263,7 +276,7 @@ button[type="submit"]:hover {
       <h3 class="section-title">Business Information</h3>
 
       <div class="form-group">
-        <label for="businessName">Business Name <span class="required">*</span></label>
+        <label for="businessName">Business Name *</label>
         <input
           id="businessName"
           name="business_name"
@@ -273,8 +286,12 @@ button[type="submit"]:hover {
       </div>
 
       <div class="form-group">
-        <label for="businessType">Business Type <span class="required">*</span></label>
-        <select id="businessType" name="business_type" required>
+        <label for="businessType">Business Type *</label>
+        <select
+          id="businessType"
+          name="business_type"
+          required>
+
           <option value="">Select one</option>
           <option value="Corporation">Corporation</option>
           <option value="LLC">LLC</option>
@@ -282,16 +299,17 @@ button[type="submit"]:hover {
           <option value="Sole Proprietorship">Sole Proprietorship</option>
           <option value="Nonprofit">Nonprofit</option>
           <option value="Other">Other</option>
+
         </select>
       </div>
 
       <div class="form-group">
-        <label for="industry">Industry <span class="required">*</span></label>
+        <label for="industry">Industry *</label>
         <input
           id="industry"
           name="industry"
           type="text"
-          placeholder="e.g. Retail, Technology, Food & Beverage, etc."
+          placeholder="e.g. Retail, Technology, Food & Beverage"
           required>
       </div>
 
@@ -301,26 +319,35 @@ button[type="submit"]:hover {
           id="website"
           name="website"
           type="url"
-          placeholder="https://">
+          placeholder="https://example.com">
       </div>
 
       <div class="form-group">
-        <label for="years">Time in Business <span class="required">*</span></label>
-        <select id="years" name="years_in_business" required>
+        <label for="years">Time in Business *</label>
+        <select
+          id="years"
+          name="years_in_business"
+          required>
+
           <option value="">Select one</option>
           <option value="Less than 1 year">Less than 1 year</option>
           <option value="1–2 years">1–2 years</option>
           <option value="3–5 years">3–5 years</option>
           <option value="6–10 years">6–10 years</option>
           <option value="More than 10 years">More than 10 years</option>
+
         </select>
       </div>
 
       <h3 class="section-title">Funding Request</h3>
 
       <div class="form-group">
-        <label for="amount">Amount Requested <span class="required">*</span></label>
-        <select id="amount" name="amount_requested" required>
+        <label for="amount">Amount Requested *</label>
+        <select
+          id="amount"
+          name="amount_requested"
+          required>
+
           <option value="">Select amount</option>
           <option value="$5,000">$5,000</option>
           <option value="$10,000">$10,000</option>
@@ -329,11 +356,15 @@ button[type="submit"]:hover {
           <option value="$75,000">$75,000</option>
           <option value="$100,000">$100,000</option>
           <option value="Other">Other</option>
+
         </select>
       </div>
 
       <div class="form-group">
-        <label for="purpose">How will the funding be used? <span class="required">*</span></label>
+        <label for="purpose">
+          How will the funding be used? *
+        </label>
+
         <textarea
           id="purpose"
           name="funding_purpose"
@@ -342,7 +373,10 @@ button[type="submit"]:hover {
       </div>
 
       <div class="form-group">
-        <label for="description">Describe Your Business <span class="required">*</span></label>
+        <label for="description">
+          Describe Your Business *
+        </label>
+
         <textarea
           id="description"
           name="business_description"
@@ -351,7 +385,10 @@ button[type="submit"]:hover {
       </div>
 
       <div class="form-group">
-        <label for="impact">Expected Impact of Funding</label>
+        <label for="impact">
+          Expected Impact of Funding
+        </label>
+
         <textarea
           id="impact"
           name="funding_impact"
@@ -361,7 +398,10 @@ button[type="submit"]:hover {
       <h3 class="section-title">Additional Information</h3>
 
       <div class="form-group">
-        <label for="employees">Number of Employees</label>
+        <label for="employees">
+          Number of Employees
+        </label>
+
         <input
           id="employees"
           name="number_of_employees"
@@ -371,48 +411,69 @@ button[type="submit"]:hover {
       </div>
 
       <div class="form-group">
-        <label for="referral">How did you hear about this application?</label>
-        <select id="referral" name="referral_source">
+        <label for="referral">
+          How did you hear about this application?
+        </label>
+
+        <select
+          id="referral"
+          name="referral_source">
+
           <option value="">Select one</option>
           <option value="Search engine">Search engine</option>
           <option value="Social media">Social media</option>
           <option value="Referral">Referral</option>
           <option value="Email">Email</option>
           <option value="Other">Other</option>
+
         </select>
       </div>
 
       <div class="checkbox-group">
+
         <input
           id="confirm"
           name="applicant_confirmation"
           type="checkbox"
           value="Yes"
           required>
+
         <label for="confirm">
-          I confirm that the information provided is accurate to the best of my knowledge. <span class="required">*</span>
+          I confirm that the information provided is accurate to the best of my knowledge. *
         </label>
+
       </div>
 
       <div class="checkbox-group">
+
         <input
           id="contact"
           name="contact_permission"
           type="checkbox"
           value="Yes">
+
         <label for="contact">
           I agree to be contacted regarding this application.
         </label>
+
       </div>
 
-      <button type="submit">Submit Your Application</button>
+      <button type="submit">
+        Submit Your Application
+      </button>
+
+      <div class="disclaimer">
+        This is an independent funding application and is not an official
+        IFundWomen application unless expressly authorized by IFundWomen.
+      </div>
 
     </form>
+
   </div>
 </main>
 
 <footer class="footer">
-  &copy; IFundWomen Funding Application. All rights reserved.
+  &copy; Independent Funding Application. All rights reserved.
 </footer>
 
 </body>

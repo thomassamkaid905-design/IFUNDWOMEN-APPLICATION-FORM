@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Independent Funding Application</title>
+<title>Submit Your Funding Application</title>
 
 <style>
 *{box-sizing:border-box}
@@ -13,25 +13,24 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   background:#f4f7fb;
-  color:#18243a;
+  color:#17233a;
 }
 
 .header{
   background:#193f78;
-  color:#fff;
+  color:white;
   text-align:center;
-  padding:55px 20px;
+  padding:48px 20px;
 }
 
 .header h1{
-  margin:0 0 12px;
-  font-size:36px;
-  font-weight:700;
+  margin:0 0 10px;
+  font-size:34px;
 }
 
 .header p{
   margin:0;
-  font-size:18px;
+  font-size:17px;
 }
 
 .container{
@@ -47,19 +46,32 @@ body{
   box-shadow:0 8px 30px rgba(0,0,0,.08);
 }
 
+.application-title{
+  text-align:center;
+  color:#193f78;
+  font-size:30px;
+  margin:0 0 8px;
+}
+
+.application-subtitle{
+  text-align:center;
+  color:#667085;
+  margin:0 0 30px;
+}
+
 .notice{
   background:#eef5ff;
-  border-left:5px solid #2c6dcc;
-  padding:18px;
+  border-left:5px solid #2868c7;
+  padding:17px;
+  line-height:1.55;
   margin-bottom:30px;
-  line-height:1.6;
 }
 
 .section{
   color:#193f78;
-  font-size:24px;
-  margin-top:32px;
-  padding-bottom:12px;
+  font-size:23px;
+  margin-top:30px;
+  padding-bottom:11px;
   border-bottom:1px solid #d9dee7;
 }
 
@@ -141,16 +153,12 @@ button:hover{
     padding:22px;
   }
 
-  .header{
-    padding:42px 18px;
-  }
-
   .header h1{
     font-size:28px;
   }
 
-  .header p{
-    font-size:16px;
+  .application-title{
+    font-size:26px;
   }
 }
 </style>
@@ -159,7 +167,7 @@ button:hover{
 <body>
 
 <header class="header">
-  <h1>Independent Funding Application</h1>
+  <h1>Funding Application</h1>
   <p>Business funding application for consideration</p>
 </header>
 
@@ -167,12 +175,18 @@ button:hover{
 
 <div class="card">
 
+<h2 class="application-title">Submit Your Application</h2>
+
+<p class="application-subtitle">
+Complete the form below to submit your business funding request.
+</p>
+
 <div class="notice">
-  <strong>Important:</strong>
-  This is an independent funding application and is not an official
-  IFundWomen application unless expressly authorized by IFundWomen.
-  Submission does not guarantee approval or funding. Do not submit passwords,
-  banking login credentials, PINs, or other sensitive account information.
+<strong>Important:</strong>
+This is an independent funding application. Submission does not guarantee
+approval or funding. Please provide accurate information. Do not submit
+passwords, banking login credentials, PINs, or other sensitive account
+information.
 </div>
 
 <form action="https://formspree.io/f/myeylozy" method="POST">
@@ -184,58 +198,60 @@ button:hover{
 <div>
 <label for="firstName">First Name *</label>
 <input
-  id="firstName"
-  name="first_name"
-  type="text"
-  required>
+id="firstName"
+name="first_name"
+type="text"
+placeholder="Enter your first name"
+required>
 </div>
 
 <div>
 <label for="lastName">Last Name *</label>
 <input
-  id="lastName"
-  name="last_name"
-  type="text"
-  required>
+id="lastName"
+name="last_name"
+type="text"
+placeholder="Enter your last name"
+required>
 </div>
 
 </div>
 
 <label for="email">Email Address *</label>
 <input
-  id="email"
-  name="email"
-  type="email"
-  required>
+id="email"
+name="email"
+type="email"
+placeholder="name@example.com"
+required>
 
 <label for="phone">Phone Number *</label>
 <input
-  id="phone"
-  name="phone"
-  type="tel"
-  required>
+id="phone"
+name="phone"
+type="tel"
+placeholder="(123) 456-7890"
+required>
 
 <label for="address">Business or Contact Address</label>
 <input
-  id="address"
-  name="address"
-  type="text">
+id="address"
+name="address"
+type="text"
+placeholder="Enter your address">
 
 <h2 class="section">Business Information</h2>
 
 <label for="businessName">Business Name *</label>
 <input
-  id="businessName"
-  name="business_name"
-  type="text"
-  required>
+id="businessName"
+name="business_name"
+type="text"
+placeholder="Enter your business name"
+required>
 
 <label for="businessType">Business Type *</label>
-<select
-  id="businessType"
-  name="business_type"
-  required>
-
+<select id="businessType" name="business_type" required>
 <option value="">Select one</option>
 <option>Corporation</option>
 <option>LLC</option>
@@ -243,46 +259,37 @@ button:hover{
 <option>Sole Proprietorship</option>
 <option>Nonprofit</option>
 <option>Other</option>
-
 </select>
 
 <label for="industry">Industry *</label>
 <input
-  id="industry"
-  name="industry"
-  type="text"
-  required>
+id="industry"
+name="industry"
+type="text"
+placeholder="e.g. Retail, Technology, Food & Beverage"
+required>
 
 <label for="website">Business Website</label>
 <input
-  id="website"
-  name="website"
-  type="url"
-  placeholder="https://">
+id="website"
+name="website"
+type="url"
+placeholder="https://">
 
 <label for="years">Time in Business *</label>
-<select
-  id="years"
-  name="years_in_business"
-  required>
-
+<select id="years" name="years_in_business" required>
 <option value="">Select one</option>
 <option>Less than 1 year</option>
 <option>1–2 years</option>
 <option>3–5 years</option>
 <option>6–10 years</option>
 <option>More than 10 years</option>
-
 </select>
 
 <h2 class="section">Funding Request</h2>
 
 <label for="amount">Amount Requested *</label>
-<select
-  id="amount"
-  name="amount_requested"
-  required>
-
+<select id="amount" name="amount_requested" required>
 <option value="">Select amount</option>
 <option>$5,000</option>
 <option>$10,000</option>
@@ -291,84 +298,76 @@ button:hover{
 <option>$75,000</option>
 <option>$100,000</option>
 <option>Other</option>
-
 </select>
 
 <label for="purpose">How will the funding be used? *</label>
 <textarea
-  id="purpose"
-  name="funding_purpose"
-  placeholder="Explain how the funds would support your business."
-  required></textarea>
+id="purpose"
+name="funding_purpose"
+placeholder="Explain how the funds would support your business."
+required></textarea>
 
 <label for="description">Describe Your Business *</label>
 <textarea
-  id="description"
-  name="business_description"
-  placeholder="Tell us about your business, products or services, customers, and goals."
-  required></textarea>
+id="description"
+name="business_description"
+placeholder="Tell us about your business, products or services, customers, and goals."
+required></textarea>
 
 <label for="impact">Expected Impact of Funding</label>
 <textarea
-  id="impact"
-  name="funding_impact"
-  placeholder="Explain what you hope to accomplish with the funding."></textarea>
+id="impact"
+name="funding_impact"
+placeholder="Explain what you hope to accomplish with the funding."></textarea>
 
 <h2 class="section">Additional Information</h2>
 
 <label for="employees">Number of Employees</label>
 <input
-  id="employees"
-  name="number_of_employees"
-  type="number"
-  min="0">
+id="employees"
+name="number_of_employees"
+type="number"
+min="0"
+placeholder="0">
 
 <label for="referral">How did you hear about this application?</label>
-<select
-  id="referral"
-  name="referral_source">
-
+<select id="referral" name="referral_source">
 <option value="">Select one</option>
 <option>Search engine</option>
 <option>Social media</option>
 <option>Referral</option>
 <option>Email</option>
 <option>Other</option>
-
 </select>
 
 <div class="checkbox">
-
 <input
-  id="confirm"
-  name="applicant_confirmation"
-  type="checkbox"
-  value="Yes"
-  required>
+id="confirm"
+name="applicant_confirmation"
+type="checkbox"
+value="Yes"
+required>
 
 <label for="confirm">
-I confirm that the information provided in this application is accurate
-to the best of my knowledge.
+I confirm that the information provided is accurate to the best of my
+knowledge.
 </label>
-
 </div>
 
 <div class="checkbox">
-
 <input
-  id="contact"
-  name="contact_permission"
-  type="checkbox"
-  value="Yes">
+id="contact"
+name="contact_permission"
+type="checkbox"
+value="Yes">
 
 <label for="contact">
 I agree to be contacted regarding this application.
 </label>
-
 </div>
 
 <button type="submit">
-Submit Application
+Submit Your Application
 </button>
 
 </form>

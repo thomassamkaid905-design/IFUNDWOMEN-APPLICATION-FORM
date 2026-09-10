@@ -7,71 +7,194 @@
 <title>Funding Application</title>
 
 <style>
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+:root {
+  --navy: #183b68;
+  --blue: #2868c7;
+  --text: #17233a;
+  --muted: #667085;
+  --border: #dfe5ed;
+  --bg: #f5f8fc;
+  --white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, sans-serif;
-  background-color: #f4f7fb;
-  color: #17233a;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  background:
+    radial-gradient(circle at top left, #edf5ff 0, transparent 35%),
+    radial-gradient(circle at top right, #f5efff 0, transparent 30%),
+    var(--bg);
+  color: var(--text);
   line-height: 1.5;
 }
 
+/* HEADER */
+
 .header {
-  background: #193f78;
-  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #163963, #24599a);
+  color: white;
+  padding: 58px 20px 70px;
   text-align: center;
-  padding: 48px 20px;
+}
+
+.header::before,
+.header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+}
+
+.header::before {
+  width: 260px;
+  height: 260px;
+  top: -150px;
+  left: -80px;
+}
+
+.header::after {
+  width: 330px;
+  height: 330px;
+  right: -140px;
+  bottom: -220px;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.18);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 .header h1 {
-  margin: 0 0 10px;
-  font-size: 34px;
-  font-weight: 700;
+  margin: 0 0 12px;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.12;
+  font-weight: 750;
+  letter-spacing: -1px;
 }
 
 .header p {
-  margin: 0;
+  max-width: 600px;
+  margin: auto;
   font-size: 17px;
   opacity: 0.9;
 }
 
+/* CONTAINER */
+
 .container {
-  max-width: 850px;
-  margin: 35px auto;
+  width: 100%;
+  max-width: 900px;
+  margin: -35px auto 50px;
   padding: 0 18px;
+  position: relative;
+  z-index: 3;
 }
 
+/* CARD */
+
 .card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 35px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  background: rgba(255,255,255,0.98);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 24px;
+  padding: 42px;
+  box-shadow:
+    0 20px 60px rgba(20, 45, 80, 0.10),
+    0 3px 12px rgba(20, 45, 80, 0.04);
 }
+
+/* INTRO */
 
 .application-title {
   text-align: center;
-  color: #193f78;
+  color: var(--navy);
   font-size: 30px;
-  margin: 0 0 8px;
+  line-height: 1.2;
+  margin: 0 0 9px;
+  letter-spacing: -0.5px;
 }
 
 .application-subtitle {
   text-align: center;
-  color: #667085;
-  margin: 0 0 30px;
+  color: var(--muted);
+  margin: 0 auto 34px;
+  max-width: 620px;
+  font-size: 16px;
+}
+
+/* SECTION */
+
+.section {
+  margin-top: 34px;
+}
+
+.section:first-of-type {
+  margin-top: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.section-number {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #edf4ff;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 750;
 }
 
 .section-title {
-  color: #193f78;
-  font-size: 22px;
-  margin: 35px 0 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #d9dee7;
+  color: var(--navy);
+  font-size: 20px;
+  margin: 0;
+  font-weight: 700;
 }
+
+/* FORM */
 
 .row {
   display: grid;
@@ -80,112 +203,234 @@ body {
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 19px;
 }
 
 label {
   display: block;
-  font-weight: 600;
   margin-bottom: 8px;
+  color: #26364d;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.required {
+  color: #c53d4d;
 }
 
 input,
 select,
 textarea {
   width: 100%;
-  padding: 14px;
-  border: 1px solid #cbd4e0;
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: #ffffff;
-  color: #17233a;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 15px;
+  background: #fbfcfe;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease,
+    transform .2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9aa5b4;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  background: #ffffff;
+  border-color: #c8d2df;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #2868c7;
-  box-shadow: 0 0 0 3px rgba(40, 104, 199, 0.15);
+  background: #ffffff;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(40,104,199,.10);
 }
 
 textarea {
-  min-height: 130px;
+  min-height: 135px;
   resize: vertical;
+}
+
+/* CHECKBOXES */
+
+.checkbox-area {
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fafcff;
 }
 
 .checkbox-group {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  margin: 22px 0;
+  margin: 0;
+}
+
+.checkbox-group + .checkbox-group {
+  margin-top: 16px;
 }
 
 .checkbox-group input[type="checkbox"] {
-  width: auto;
-  margin-top: 4px;
+  appearance: none;
+  width: 19px;
+  height: 19px;
+  min-width: 19px;
+  padding: 0;
+  margin: 2px 0 0;
+  border: 1px solid #b9c5d3;
+  border-radius: 5px;
+  background: white;
   cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: inset 0 0 0 4px white;
 }
 
 .checkbox-group label {
   margin: 0;
-  font-weight: 400;
-  line-height: 1.5;
+  font-weight: 450;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5d6878;
   cursor: pointer;
 }
 
-button[type="submit"] {
+/* SUBMIT */
+
+.submit-area {
+  margin-top: 32px;
+}
+
+.submit-button {
   width: 100%;
-  padding: 16px;
-  margin-top: 15px;
-  border: 0;
-  border-radius: 9px;
-  background: #193f78;
-  color: #ffffff;
-  font-size: 18px;
+  border: none;
+  border-radius: 13px;
+  padding: 17px 20px;
+  background: linear-gradient(135deg, #193f78, #2868c7);
+  color: white;
+  font-family: inherit;
+  font-size: 17px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 8px 22px rgba(40,104,199,.20);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    opacity .2s ease;
 }
 
-button[type="submit"]:hover {
-  background: #12315e;
+.submit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(40,104,199,.26);
 }
 
-.footer {
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-note {
   text-align: center;
-  padding: 30px 20px;
-  color: #687386;
-  font-size: 13px;
+  margin: 12px 0 0;
+  color: #7a8594;
+  font-size: 12px;
 }
+
+/* DISCLAIMER */
 
 .disclaimer {
   margin-top: 25px;
-  padding: 14px;
-  border-radius: 8px;
-  background: #f4f7fb;
-  color: #687386;
-  font-size: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #f7f9fc;
+  border: 1px solid #e7ebf1;
+  color: #707b89;
+  font-size: 11px;
+  line-height: 1.55;
   text-align: center;
 }
 
-@media (max-width: 650px) {
+/* FOOTER */
+
+.footer {
+  text-align: center;
+  padding: 10px 20px 35px;
+  color: #7b8695;
+  font-size: 12px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .header {
+    padding: 45px 18px 65px;
+  }
+
+  .header h1 {
+    font-size: 31px;
+  }
+
+  .header p {
+    font-size: 15px;
+  }
+
+  .container {
+    margin-top: -28px;
+    padding: 0 12px;
+  }
+
+  .card {
+    padding: 26px 19px;
+    border-radius: 20px;
+  }
+
+  .application-title {
+    font-size: 25px;
+  }
+
+  .application-subtitle {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
   .row {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  .card {
-    padding: 22px;
+  .section {
+    margin-top: 30px;
   }
 
-  .header h1 {
-    font-size: 28px;
+  .section-title {
+    font-size: 18px;
   }
 
-  .application-title {
-    font-size: 24px;
+  input,
+  select,
+  textarea {
+    padding: 13px;
+    font-size: 16px;
+  }
+
+  .submit-button {
+    font-size: 16px;
   }
 }
 </style>
@@ -194,286 +439,392 @@ button[type="submit"]:hover {
 <body>
 
 <header class="header">
-  <h1>Funding Application</h1>
-  <p>Business funding application for consideration</p>
+  <div class="header-content">
+
+    <div class="badge">
+      ✦ Funding Application
+    </div>
+
+    <h1>Business Funding Application</h1>
+
+    <p>
+      Complete the application below to submit your funding request for consideration.
+    </p>
+
+  </div>
 </header>
 
 <main class="container">
+
   <div class="card">
 
-    <h2 class="application-title">Submit Your Application</h2>
+    <h2 class="application-title">
+      Submit Your Application
+    </h2>
 
     <p class="application-subtitle">
-      Complete the form below to submit your business funding request.
+      Please provide accurate information so your application can be properly reviewed.
     </p>
 
-    <!-- Formspree receives the application -->
     <form
       action="https://formspree.io/f/myeylozy"
       method="POST">
 
-      <!-- Redirect applicant to your own confirmation page -->
-      <input
-        type="hidden"
-        name="_next"
-        value="https://kaid905-design.github.io/IFUNDWOMEN-APPLICATION-FORM/thank-you.html">
+      <!-- Applicant Information -->
 
-      <h3 class="section-title">Applicant Information</h3>
+      <section class="section">
 
-      <div class="row">
+        <div class="section-heading">
+          <div class="section-number">01</div>
+          <h3 class="section-title">Applicant Information</h3>
+        </div>
+
+        <div class="row">
+
+          <div class="form-group">
+            <label for="firstName">
+              First Name <span class="required">*</span>
+            </label>
+
+            <input
+              id="firstName"
+              name="first_name"
+              type="text"
+              placeholder="Enter your first name"
+              autocomplete="given-name"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">
+              Last Name <span class="required">*</span>
+            </label>
+
+            <input
+              id="lastName"
+              name="last_name"
+              type="text"
+              placeholder="Enter your last name"
+              autocomplete="family-name"
+              required>
+          </div>
+
+        </div>
 
         <div class="form-group">
-          <label for="firstName">First Name *</label>
+          <label for="email">
+            Email Address <span class="required">*</span>
+          </label>
+
           <input
-            id="firstName"
-            name="first_name"
-            type="text"
-            placeholder="Enter your first name"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="name@example.com"
+            autocomplete="email"
             required>
         </div>
 
         <div class="form-group">
-          <label for="lastName">Last Name *</label>
+          <label for="phone">
+            Phone Number <span class="required">*</span>
+          </label>
+
           <input
-            id="lastName"
-            name="last_name"
-            type="text"
-            placeholder="Enter your last name"
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="(123) 456-7890"
+            autocomplete="tel"
             required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">
+            Business or Contact Address
+          </label>
+
+          <input
+            id="address"
+            name="address"
+            type="text"
+            placeholder="Enter your address"
+            autocomplete="street-address">
+        </div>
+
+      </section>
+
+      <!-- Business Information -->
+
+      <section class="section">
+
+        <div class="section-heading">
+          <div class="section-number">02</div>
+          <h3 class="section-title">Business Information</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="businessName">
+            Business Name <span class="required">*</span>
+          </label>
+
+          <input
+            id="businessName"
+            name="business_name"
+            type="text"
+            placeholder="Enter your business name"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="businessType">
+            Business Type <span class="required">*</span>
+          </label>
+
+          <select
+            id="businessType"
+            name="business_type"
+            required>
+
+            <option value="">Select one</option>
+            <option value="Corporation">Corporation</option>
+            <option value="LLC">LLC</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Sole Proprietorship">Sole Proprietorship</option>
+            <option value="Nonprofit">Nonprofit</option>
+            <option value="Other">Other</option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="industry">
+            Industry <span class="required">*</span>
+          </label>
+
+          <input
+            id="industry"
+            name="industry"
+            type="text"
+            placeholder="e.g. Retail, Technology, Food & Beverage"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="website">
+            Business Website
+          </label>
+
+          <input
+            id="website"
+            name="website"
+            type="url"
+            placeholder="https://example.com"
+            autocomplete="url">
+        </div>
+
+        <div class="form-group">
+          <label for="years">
+            Time in Business <span class="required">*</span>
+          </label>
+
+          <select
+            id="years"
+            name="years_in_business"
+            required>
+
+            <option value="">Select one</option>
+            <option value="Less than 1 year">Less than 1 year</option>
+            <option value="1–2 years">1–2 years</option>
+            <option value="3–5 years">3–5 years</option>
+            <option value="6–10 years">6–10 years</option>
+            <option value="More than 10 years">More than 10 years</option>
+
+          </select>
+        </div>
+
+      </section>
+
+      <!-- Funding Request -->
+
+      <section class="section">
+
+        <div class="section-heading">
+          <div class="section-number">03</div>
+          <h3 class="section-title">Funding Request</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="amount">
+            Amount Requested <span class="required">*</span>
+          </label>
+
+          <select
+            id="amount"
+            name="amount_requested"
+            required>
+
+            <option value="">Select amount</option>
+            <option value="$5,000">$5,000</option>
+            <option value="$10,000">$10,000</option>
+            <option value="$25,000">$25,000</option>
+            <option value="$50,000">$50,000</option>
+            <option value="$75,000">$75,000</option>
+            <option value="$100,000">$100,000</option>
+            <option value="Other">Other</option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="purpose">
+            How will the funding be used?
+            <span class="required">*</span>
+          </label>
+
+          <textarea
+            id="purpose"
+            name="funding_purpose"
+            placeholder="Explain how the requested funding would support your business."
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="description">
+            Describe Your Business
+            <span class="required">*</span>
+          </label>
+
+          <textarea
+            id="description"
+            name="business_description"
+            placeholder="Tell us about your business, products or services, customers, and goals."
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="impact">
+            Expected Impact of Funding
+          </label>
+
+          <textarea
+            id="impact"
+            name="funding_impact"
+            placeholder="Explain what you hope to accomplish with the funding."></textarea>
+        </div>
+
+      </section>
+
+      <!-- Additional Information -->
+
+      <section class="section">
+
+        <div class="section-heading">
+          <div class="section-number">04</div>
+          <h3 class="section-title">Additional Information</h3>
+        </div>
+
+        <div class="form-group">
+          <label for="employees">
+            Number of Employees
+          </label>
+
+          <input
+            id="employees"
+            name="number_of_employees"
+            type="number"
+            min="0"
+            placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="referral">
+            How did you hear about this application?
+          </label>
+
+          <select
+            id="referral"
+            name="referral_source">
+
+            <option value="">Select one</option>
+            <option value="Search engine">Search engine</option>
+            <option value="Social media">Social media</option>
+            <option value="Referral">Referral</option>
+            <option value="Email">Email</option>
+            <option value="Other">Other</option>
+
+          </select>
+        </div>
+
+      </section>
+
+      <!-- Confirmation -->
+
+      <div class="checkbox-area">
+
+        <div class="checkbox-group">
+
+          <input
+            id="confirm"
+            name="applicant_confirmation"
+            type="checkbox"
+            value="Yes"
+            required>
+
+          <label for="confirm">
+            I confirm that the information provided is accurate to the best
+            of my knowledge. <span class="required">*</span>
+          </label>
+
+        </div>
+
+        <div class="checkbox-group">
+
+          <input
+            id="contact"
+            name="contact_permission"
+            type="checkbox"
+            value="Yes">
+
+          <label for="contact">
+            I agree to be contacted regarding this application.
+          </label>
+
         </div>
 
       </div>
 
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="name@example.com"
-          required>
-      </div>
+      <!-- Submit -->
 
-      <div class="form-group">
-        <label for="phone">Phone Number *</label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          placeholder="(123) 456-7890"
-          required>
-      </div>
+      <div class="submit-area">
 
-      <div class="form-group">
-        <label for="address">Business or Contact Address</label>
-        <input
-          id="address"
-          name="address"
-          type="text"
-          placeholder="Enter your address">
-      </div>
+        <button
+          type="submit"
+          class="submit-button">
+          Submit Your Application
+        </button>
 
-      <h3 class="section-title">Business Information</h3>
-
-      <div class="form-group">
-        <label for="businessName">Business Name *</label>
-        <input
-          id="businessName"
-          name="business_name"
-          type="text"
-          placeholder="Enter your business name"
-          required>
-      </div>
-
-      <div class="form-group">
-        <label for="businessType">Business Type *</label>
-        <select
-          id="businessType"
-          name="business_type"
-          required>
-
-          <option value="">Select one</option>
-          <option value="Corporation">Corporation</option>
-          <option value="LLC">LLC</option>
-          <option value="Partnership">Partnership</option>
-          <option value="Sole Proprietorship">Sole Proprietorship</option>
-          <option value="Nonprofit">Nonprofit</option>
-          <option value="Other">Other</option>
-
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="industry">Industry *</label>
-        <input
-          id="industry"
-          name="industry"
-          type="text"
-          placeholder="e.g. Retail, Technology, Food & Beverage"
-          required>
-      </div>
-
-      <div class="form-group">
-        <label for="website">Business Website</label>
-        <input
-          id="website"
-          name="website"
-          type="url"
-          placeholder="https://example.com">
-      </div>
-
-      <div class="form-group">
-        <label for="years">Time in Business *</label>
-        <select
-          id="years"
-          name="years_in_business"
-          required>
-
-          <option value="">Select one</option>
-          <option value="Less than 1 year">Less than 1 year</option>
-          <option value="1–2 years">1–2 years</option>
-          <option value="3–5 years">3–5 years</option>
-          <option value="6–10 years">6–10 years</option>
-          <option value="More than 10 years">More than 10 years</option>
-
-        </select>
-      </div>
-
-      <h3 class="section-title">Funding Request</h3>
-
-      <div class="form-group">
-        <label for="amount">Amount Requested *</label>
-        <select
-          id="amount"
-          name="amount_requested"
-          required>
-
-          <option value="">Select amount</option>
-          <option value="$5,000">$5,000</option>
-          <option value="$10,000">$10,000</option>
-          <option value="$25,000">$25,000</option>
-          <option value="$50,000">$50,000</option>
-          <option value="$75,000">$75,000</option>
-          <option value="$100,000">$100,000</option>
-          <option value="Other">Other</option>
-
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="purpose">
-          How will the funding be used? *
-        </label>
-
-        <textarea
-          id="purpose"
-          name="funding_purpose"
-          placeholder="Explain how the funds would support your business."
-          required></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="description">
-          Describe Your Business *
-        </label>
-
-        <textarea
-          id="description"
-          name="business_description"
-          placeholder="Tell us about your business, products or services, customers, and goals."
-          required></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="impact">
-          Expected Impact of Funding
-        </label>
-
-        <textarea
-          id="impact"
-          name="funding_impact"
-          placeholder="Explain what you hope to accomplish with the funding."></textarea>
-      </div>
-
-      <h3 class="section-title">Additional Information</h3>
-
-      <div class="form-group">
-        <label for="employees">
-          Number of Employees
-        </label>
-
-        <input
-          id="employees"
-          name="number_of_employees"
-          type="number"
-          min="0"
-          placeholder="0">
-      </div>
-
-      <div class="form-group">
-        <label for="referral">
-          How did you hear about this application?
-        </label>
-
-        <select
-          id="referral"
-          name="referral_source">
-
-          <option value="">Select one</option>
-          <option value="Search engine">Search engine</option>
-          <option value="Social media">Social media</option>
-          <option value="Referral">Referral</option>
-          <option value="Email">Email</option>
-          <option value="Other">Other</option>
-
-        </select>
-      </div>
-
-      <div class="checkbox-group">
-
-        <input
-          id="confirm"
-          name="applicant_confirmation"
-          type="checkbox"
-          value="Yes"
-          required>
-
-        <label for="confirm">
-          I confirm that the information provided is accurate to the best of my knowledge. *
-        </label>
+        <p class="submit-note">
+          Please review your information before submitting.
+        </p>
 
       </div>
-
-      <div class="checkbox-group">
-
-        <input
-          id="contact"
-          name="contact_permission"
-          type="checkbox"
-          value="Yes">
-
-        <label for="contact">
-          I agree to be contacted regarding this application.
-        </label>
-
-      </div>
-
-      <button type="submit">
-        Submit Your Application
-      </button>
 
       <div class="disclaimer">
         This is an independent funding application and is not an official
         IFundWomen application unless expressly authorized by IFundWomen.
+        Do not submit passwords, banking login credentials, PINs, or other
+        sensitive account information through this form.
       </div>
 
     </form>
 
   </div>
+
 </main>
 
 <footer class="footer">
-  &copy; Independent Funding Application. All rights reserved.
+  © Independent Funding Application
 </footer>
 
 </body>

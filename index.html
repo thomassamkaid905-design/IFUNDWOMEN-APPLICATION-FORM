@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Business Funding Application</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #172033;
+}
+
+.header {
+  background: #173b72;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  font-size: 30px;
+}
+
+.header p {
+  margin: 0;
+  opacity: .9;
+}
+
+.container {
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 0 18px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 5px 25px rgba(0,0,0,.08);
+}
+
+.notice {
+  background: #eef5ff;
+  border-left: 4px solid #2867c7;
+  padding: 15px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.section-title {
+  margin-top: 30px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #173b72;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ccd3df;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-bottom: 18px;
+  background: white;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 15px 0 25px;
+}
+
+.checkbox input {
+  width: auto;
+  margin-top: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 8px;
+  background: #173b72;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0f2b55;
+}
+
+.footer {
+  text-align: center;
+  padding: 25px;
+  color: #687386;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <h1>Business Funding Application</h1>
+  <p>Independent application for business funding consideration</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<div class="notice">
+  <strong>Important:</strong> This is an independent application form.
+  Submission does not guarantee approval or funding. Do not submit passwords,
+  banking login credentials, or other sensitive account information.
+</div>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+<h2 class="section-title">Applicant Information</h2>
+
+<div class="row">
+
+<div>
+<label for="firstName">First Name *</label>
+<input type="text" id="firstName" name="first_name" required>
+</div>
+
+<div>
+<label for="lastName">Last Name *</label>
+<input type="text" id="lastName" name="last_name" required>
+</div>
+
+</div>
+
+<label for="email">Email Address *</label>
+<input type="email" id="email" name="email" required>
+
+<label for="phone">Phone Number *</label>
+<input type="tel" id="phone" name="phone" required>
+
+<label for="address">Business/Contact Address</label>
+<input type="text" id="address" name="address">
+
+<h2 class="section-title">Business Information</h2>
+
+<label for="businessName">Business Name *</label>
+<input type="text" id="businessName" name="business_name" required>
+
+<label for="businessType">Business Type *</label>
+<select id="businessType" name="business_type" required>
+  <option value="">Select one</option>
+  <option>Corporation</option>
+  <option>LLC</option>
+  <option>Partnership</option>
+  <option>Sole Proprietorship</option>
+  <option>Nonprofit</option>
+  <option>Other</option>
+</select>
+
+<label for="industry">Industry *</label>
+<input type="text" id="industry" name="industry" required>
+
+<label for="website">Business Website</label>
+<input type="url" id="website" name="website" placeholder="https://">
+
+<label for="years">How long has the business operated? *</label>
+<select id="years" name="years_in_business" required>
+  <option value="">Select one</option>
+  <option>Less than 1 year</option>
+  <option>1–2 years</option>
+  <option>3–5 years</option>
+  <option>6–10 years</option>
+  <option>More than 10 years</option>
+</select>
+
+<h2 class="section-title">Funding Request</h2>
+
+<label for="amount">Amount Requested *</label>
+<select id="amount" name="amount_requested" required>
+  <option value="">Select amount</option>
+  <option>$5,000</option>
+  <option>$10,000</option>
+  <option>$25,000</option>
+  <option>$50,000</option>
+  <option>$75,000</option>
+  <option>$100,000</option>
+  <option>Other</option>
+</select>
+
+<label for="purpose">How would the funding be used? *</label>
+<textarea
+  id="purpose"
+  name="funding_purpose"
+  placeholder="Describe how the requested funds would support your business."
+  required></textarea>
+
+<label for="description">Tell us about your business *</label>
+<textarea
+  id="description"
+  name="business_description"
+  placeholder="Describe your business, products or services, customers, and goals."
+  required></textarea>
+
+<label for="impact">What impact would funding have on your business?</label>
+<textarea
+  id="impact"
+  name="funding_impact"
+  placeholder="Explain what you hope to accomplish with the funding."></textarea>
+
+<h2 class="section-title">Additional Information</h2>
+
+<label for="employees">Number of Employees</label>
+<input type="number" id="employees" name="number_of_employees" min="0">
+
+<label for="referral">How did you hear about this application?</label>
+<select id="referral" name="referral_source">
+  <option value="">Select one</option>
+  <option>Search engine</option>
+  <option>Social media</option>
+  <option>Referral</option>
+  <option>Email</option>
+  <option>Other</option>
+</select>
+
+<div class="checkbox">
+<input type="checkbox" id="confirm" name="applicant_confirmation" value="Yes" required>
+<label for="confirm">
+I confirm that the information provided in this application is accurate
+to the best of my knowledge.
+</label>
+</div>
+
+<div class="checkbox">
+<input type="checkbox" id="contact" name="contact_permission" value="Yes">
+<label for="contact">
+I agree to be contacted regarding this application.
+</label>
+</div>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+</div>
+
+</div>
+
+<footer class="footer">
+  Independent Business Funding Application
+</footer>
+
+</body>
+</html>

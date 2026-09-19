@@ -420,18 +420,6 @@ textarea {
   font-size: 12px;
 }
 
-.disclaimer {
-  margin-top: 25px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: #f7f9fc;
-  border: 1px solid #e7ebf1;
-  color: #707b89;
-  font-size: 11px;
-  line-height: 1.55;
-  text-align: center;
-}
-
 .footer {
   text-align: center;
   padding: 10px 20px 35px;
@@ -933,13 +921,6 @@ textarea {
 
       </div>
 
-      <div class="disclaimer">
-        This is an independent funding application and is not an official
-        IFundWomen application unless expressly authorized by IFundWomen.
-        Do not submit passwords, banking login credentials, PINs, or other
-        sensitive account information through this form.
-      </div>
-
     </form>
 
   </div>
@@ -951,13 +932,11 @@ textarea {
 </footer>
 
 <script>
-  // Get the radio buttons and the business section
   const businessRadio = document.getElementById('typeBusiness');
   const personalRadio = document.getElementById('typePersonal');
   const businessSection = document.getElementById('businessSection');
   const employeesGroup = document.getElementById('employeesGroup');
 
-  // Business fields that need "required" toggled
   const businessFields = [
     document.getElementById('businessName'),
     document.getElementById('businessType'),
@@ -967,27 +946,20 @@ textarea {
 
   function toggleBusinessSection() {
     if (personalRadio.checked) {
-      // Hide Business Information section
       businessSection.classList.add('hidden-section');
       employeesGroup.classList.add('hidden-section');
-
-      // Remove "required" so Personal applicants can submit
       businessFields.forEach(function (field) {
         field.removeAttribute('required');
       });
     } else {
-      // Show Business Information section
       businessSection.classList.remove('hidden-section');
       employeesGroup.classList.remove('hidden-section');
-
-      // Add "required" back for Business applicants
       businessFields.forEach(function (field) {
         field.setAttribute('required', 'required');
       });
     }
   }
 
-  // Listen for changes
   businessRadio.addEventListener('change', toggleBusinessSection);
   personalRadio.addEventListener('change', toggleBusinessSection);
 </script>

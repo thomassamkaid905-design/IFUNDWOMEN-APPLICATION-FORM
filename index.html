@@ -82,7 +82,6 @@ body {
   margin: auto;
 }
 
-/* LOGO STYLES */
 .logo-container {
   margin-bottom: 20px;
 }
@@ -92,8 +91,7 @@ body {
   height: auto;
   display: block;
   margin: 0 auto;
-  /* Optional: If your logo has a white background, this helps blend it */
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 .badge {
@@ -136,8 +134,6 @@ body {
   z-index: 3;
 }
 
-/* CARD */
-
 .card {
   background: rgba(255,255,255,0.98);
   border: 1px solid rgba(255,255,255,0.8);
@@ -147,8 +143,6 @@ body {
     0 20px 60px rgba(20, 45, 80, 0.10),
     0 3px 12px rgba(20, 45, 80, 0.04);
 }
-
-/* INTRO */
 
 .application-title {
   text-align: center;
@@ -166,8 +160,6 @@ body {
   max-width: 620px;
   font-size: 16px;
 }
-
-/* SECTION */
 
 .section {
   margin-top: 34px;
@@ -204,8 +196,6 @@ body {
   margin: 0;
   font-weight: 700;
 }
-
-/* FORM */
 
 .row {
   display: grid;
@@ -273,6 +263,76 @@ textarea {
   resize: vertical;
 }
 
+/* APPLICATION TYPE RADIO BUTTONS */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.radio-option {
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: #fbfcfe;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s ease;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #26364d;
+}
+
+.radio-option label:hover {
+  border-color: #c8d2df;
+  background: #ffffff;
+}
+
+.radio-option input[type="radio"]:checked + label {
+  border-color: var(--blue);
+  background: #edf4ff;
+  color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(40,104,199,.10);
+}
+
+.radio-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.radio-label-text {
+  font-size: 15px;
+}
+
+.radio-description {
+  font-size: 12px;
+  font-weight: 450;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* HIDDEN SECTION */
+.hidden-section {
+  display: none !important;
+}
+
 /* CHECKBOXES */
 
 .checkbox-area {
@@ -322,8 +382,6 @@ textarea {
   cursor: pointer;
 }
 
-/* SUBMIT */
-
 .submit-area {
   margin-top: 32px;
 }
@@ -361,22 +419,6 @@ textarea {
   color: #7a8594;
   font-size: 12px;
 }
-
-/* DISCLAIMER */
-
-.disclaimer {
-  margin-top: 25px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: #f7f9fc;
-  border: 1px solid #e7ebf1;
-  color: #707b89;
-  font-size: 11px;
-  line-height: 1.55;
-  text-align: center;
-}
-
-/* FOOTER */
 
 .footer {
   text-align: center;
@@ -429,6 +471,10 @@ textarea {
     gap: 0;
   }
 
+  .radio-group {
+    grid-template-columns: 1fr;
+  }
+
   .section {
     margin-top: 30px;
   }
@@ -456,9 +502,7 @@ textarea {
 <header class="header">
   <div class="header-content">
 
-    <!-- ADDED LOGO HERE -->
     <div class="logo-container">
-      <!-- IMPORTANT: Replace 'path-to-your-logo.jpg' with the actual URL/path to the image -->
       <img src="path-to-your-logo.jpg" alt="IFundWomen Logo" class="logo">
     </div>
 
@@ -466,7 +510,7 @@ textarea {
       ✦ IFundWomen Funding Application
     </div>
 
-    <h1>Business Funding Application</h1>
+    <h1>Funding Application</h1>
 
     <p>
       Complete the application below to submit your funding request for consideration.
@@ -489,14 +533,64 @@ textarea {
 
     <form
       action="https://formspree.io/f/myeylozy"
-      method="POST">
+      method="POST"
+      id="fundingForm">
+
+      <!-- Application Type -->
+
+      <section class="section">
+
+        <div class="section-heading">
+          <div class="section-number">01</div>
+          <h3 class="section-title">Application Type</h3>
+        </div>
+
+        <div class="form-group">
+          <label>
+            What are you applying for? <span class="required">*</span>
+          </label>
+
+          <div class="radio-group">
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="typeBusiness"
+                name="application_type"
+                value="Business"
+                required>
+              <label for="typeBusiness">
+                <span class="radio-icon">🏢</span>
+                <span class="radio-label-text">Business</span>
+                <span class="radio-description">Funding for a business or organization</span>
+              </label>
+            </div>
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="typePersonal"
+                name="application_type"
+                value="Personal"
+                required>
+              <label for="typePersonal">
+                <span class="radio-icon">👤</span>
+                <span class="radio-label-text">Personal</span>
+                <span class="radio-description">Funding for personal or individual needs</span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
 
       <!-- Applicant Information -->
 
       <section class="section">
 
         <div class="section-heading">
-          <div class="section-number">01</div>
+          <div class="section-number">02</div>
           <h3 class="section-title">Applicant Information</h3>
         </div>
 
@@ -575,12 +669,12 @@ textarea {
 
       </section>
 
-      <!-- Business Information -->
+      <!-- Business Information (hidden when Personal is selected) -->
 
-      <section class="section">
+      <section class="section" id="businessSection">
 
         <div class="section-heading">
-          <div class="section-number">02</div>
+          <div class="section-number">03</div>
           <h3 class="section-title">Business Information</h3>
         </div>
 
@@ -593,8 +687,7 @@ textarea {
             id="businessName"
             name="business_name"
             type="text"
-            placeholder="Enter your business name"
-            required>
+            placeholder="Enter your business name">
         </div>
 
         <div class="form-group">
@@ -604,8 +697,7 @@ textarea {
 
           <select
             id="businessType"
-            name="business_type"
-            required>
+            name="business_type">
 
             <option value="">Select one</option>
             <option value="Corporation">Corporation</option>
@@ -627,8 +719,7 @@ textarea {
             id="industry"
             name="industry"
             type="text"
-            placeholder="e.g. Retail, Technology, Food & Beverage"
-            required>
+            placeholder="e.g. Retail, Technology, Food & Beverage">
         </div>
 
         <div class="form-group">
@@ -651,8 +742,7 @@ textarea {
 
           <select
             id="years"
-            name="years_in_business"
-            required>
+            name="years_in_business">
 
             <option value="">Select one</option>
             <option value="Less than 1 year">Less than 1 year</option>
@@ -671,7 +761,7 @@ textarea {
       <section class="section">
 
         <div class="section-heading">
-          <div class="section-number">03</div>
+          <div class="section-number">04</div>
           <h3 class="section-title">Funding Request</h3>
         </div>
 
@@ -706,20 +796,20 @@ textarea {
           <textarea
             id="purpose"
             name="funding_purpose"
-            placeholder="Explain how the requested funding would support your business."
+            placeholder="Explain how the requested funding would support your business or personal needs."
             required></textarea>
         </div>
 
         <div class="form-group">
           <label for="description">
-            Describe Your Business
+            Describe Your Business or Situation
             <span class="required">*</span>
           </label>
 
           <textarea
             id="description"
             name="business_description"
-            placeholder="Tell us about your business, products or services, customers, and goals."
+            placeholder="Tell us about your business, products or services, customers, goals, or your personal situation."
             required></textarea>
         </div>
 
@@ -741,11 +831,11 @@ textarea {
       <section class="section">
 
         <div class="section-heading">
-          <div class="section-number">04</div>
+          <div class="section-number">05</div>
           <h3 class="section-title">Additional Information</h3>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="employeesGroup">
           <label for="employees">
             Number of Employees
           </label>
@@ -831,13 +921,6 @@ textarea {
 
       </div>
 
-      <div class="disclaimer">
-        This is an independent funding application and is not an official
-        IFundWomen application unless expressly authorized by IFundWomen.
-        Do not submit passwords, banking login credentials, PINs, or other
-        sensitive account information through this form.
-      </div>
-
     </form>
 
   </div>
@@ -847,6 +930,39 @@ textarea {
 <footer class="footer">
   © IFundWomen Funding Application
 </footer>
+
+<script>
+  const businessRadio = document.getElementById('typeBusiness');
+  const personalRadio = document.getElementById('typePersonal');
+  const businessSection = document.getElementById('businessSection');
+  const employeesGroup = document.getElementById('employeesGroup');
+
+  const businessFields = [
+    document.getElementById('businessName'),
+    document.getElementById('businessType'),
+    document.getElementById('industry'),
+    document.getElementById('years')
+  ];
+
+  function toggleBusinessSection() {
+    if (personalRadio.checked) {
+      businessSection.classList.add('hidden-section');
+      employeesGroup.classList.add('hidden-section');
+      businessFields.forEach(function (field) {
+        field.removeAttribute('required');
+      });
+    } else {
+      businessSection.classList.remove('hidden-section');
+      employeesGroup.classList.remove('hidden-section');
+      businessFields.forEach(function (field) {
+        field.setAttribute('required', 'required');
+      });
+    }
+  }
+
+  businessRadio.addEventListener('change', toggleBusinessSection);
+  personalRadio.addEventListener('change', toggleBusinessSection);
+</script>
 
 </body>
 </html>

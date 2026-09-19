@@ -82,7 +82,6 @@ body {
   margin: auto;
 }
 
-/* LOGO STYLES */
 .logo-container {
   margin-bottom: 20px;
 }
@@ -135,8 +134,6 @@ body {
   z-index: 3;
 }
 
-/* CARD */
-
 .card {
   background: rgba(255,255,255,0.98);
   border: 1px solid rgba(255,255,255,0.8);
@@ -146,8 +143,6 @@ body {
     0 20px 60px rgba(20, 45, 80, 0.10),
     0 3px 12px rgba(20, 45, 80, 0.04);
 }
-
-/* INTRO */
 
 .application-title {
   text-align: center;
@@ -165,8 +160,6 @@ body {
   max-width: 620px;
   font-size: 16px;
 }
-
-/* SECTION */
 
 .section {
   margin-top: 34px;
@@ -203,8 +196,6 @@ body {
   margin: 0;
   font-weight: 700;
 }
-
-/* FORM */
 
 .row {
   display: grid;
@@ -337,6 +328,11 @@ textarea {
   margin-top: 4px;
 }
 
+/* HIDDEN SECTION */
+.hidden-section {
+  display: none !important;
+}
+
 /* CHECKBOXES */
 
 .checkbox-area {
@@ -386,8 +382,6 @@ textarea {
   cursor: pointer;
 }
 
-/* SUBMIT */
-
 .submit-area {
   margin-top: 32px;
 }
@@ -426,8 +420,6 @@ textarea {
   font-size: 12px;
 }
 
-/* DISCLAIMER */
-
 .disclaimer {
   margin-top: 25px;
   padding: 14px 16px;
@@ -439,8 +431,6 @@ textarea {
   line-height: 1.55;
   text-align: center;
 }
-
-/* FOOTER */
 
 .footer {
   text-align: center;
@@ -524,9 +514,7 @@ textarea {
 <header class="header">
   <div class="header-content">
 
-    <!-- LOGO -->
     <div class="logo-container">
-      <!-- Replace 'path-to-your-logo.jpg' with the actual URL/path to the image -->
       <img src="path-to-your-logo.jpg" alt="IFundWomen Logo" class="logo">
     </div>
 
@@ -557,7 +545,8 @@ textarea {
 
     <form
       action="https://formspree.io/f/myeylozy"
-      method="POST">
+      method="POST"
+      id="fundingForm">
 
       <!-- Application Type -->
 
@@ -692,9 +681,9 @@ textarea {
 
       </section>
 
-      <!-- Business Information -->
+      <!-- Business Information (hidden when Personal is selected) -->
 
-      <section class="section">
+      <section class="section" id="businessSection">
 
         <div class="section-heading">
           <div class="section-number">03</div>
@@ -710,8 +699,7 @@ textarea {
             id="businessName"
             name="business_name"
             type="text"
-            placeholder="Enter your business name"
-            required>
+            placeholder="Enter your business name">
         </div>
 
         <div class="form-group">
@@ -721,8 +709,7 @@ textarea {
 
           <select
             id="businessType"
-            name="business_type"
-            required>
+            name="business_type">
 
             <option value="">Select one</option>
             <option value="Corporation">Corporation</option>
@@ -744,8 +731,7 @@ textarea {
             id="industry"
             name="industry"
             type="text"
-            placeholder="e.g. Retail, Technology, Food & Beverage"
-            required>
+            placeholder="e.g. Retail, Technology, Food & Beverage">
         </div>
 
         <div class="form-group">
@@ -768,8 +754,7 @@ textarea {
 
           <select
             id="years"
-            name="years_in_business"
-            required>
+            name="years_in_business">
 
             <option value="">Select one</option>
             <option value="Less than 1 year">Less than 1 year</option>
@@ -862,7 +847,7 @@ textarea {
           <h3 class="section-title">Additional Information</h3>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="employeesGroup">
           <label for="employees">
             Number of Employees
           </label>
@@ -964,6 +949,48 @@ textarea {
 <footer class="footer">
   © IFundWomen Funding Application
 </footer>
+
+<script>
+  // Get the radio buttons and the business section
+  const businessRadio = document.getElementById('typeBusiness');
+  const personalRadio = document.getElementById('typePersonal');
+  const businessSection = document.getElementById('businessSection');
+  const employeesGroup = document.getElementById('employeesGroup');
+
+  // Business fields that need "required" toggled
+  const businessFields = [
+    document.getElementById('businessName'),
+    document.getElementById('businessType'),
+    document.getElementById('industry'),
+    document.getElementById('years')
+  ];
+
+  function toggleBusinessSection() {
+    if (personalRadio.checked) {
+      // Hide Business Information section
+      businessSection.classList.add('hidden-section');
+      employeesGroup.classList.add('hidden-section');
+
+      // Remove "required" so Personal applicants can submit
+      businessFields.forEach(function (field) {
+        field.removeAttribute('required');
+      });
+    } else {
+      // Show Business Information section
+      businessSection.classList.remove('hidden-section');
+      employeesGroup.classList.remove('hidden-section');
+
+      // Add "required" back for Business applicants
+      businessFields.forEach(function (field) {
+        field.setAttribute('required', 'required');
+      });
+    }
+  }
+
+  // Listen for changes
+  businessRadio.addEventListener('change', toggleBusinessSection);
+  personalRadio.addEventListener('change', toggleBusinessSection);
+</script>
 
 </body>
 </html>

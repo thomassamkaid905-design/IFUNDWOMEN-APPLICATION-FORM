@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Funding Application</title>
+<title>IFundWomen Funding Application</title>
 
 <style>
 *,
@@ -30,12 +30,9 @@ html {
 body {
   margin: 0;
   font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
+    -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto,
+    "Helvetica Neue", Arial,
     sans-serif;
   background:
     radial-gradient(circle at top left, #edf5ff 0, transparent 35%),
@@ -52,7 +49,7 @@ body {
   overflow: hidden;
   background: linear-gradient(135deg, #163963, #24599a);
   color: white;
-  padding: 58px 20px 70px;
+  padding: 48px 20px 70px;
   text-align: center;
 }
 
@@ -83,6 +80,19 @@ body {
   z-index: 2;
   max-width: 760px;
   margin: auto;
+}
+
+/* LOGO STYLES */
+.logo-container {
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 .badge {
@@ -262,6 +272,71 @@ textarea {
   resize: vertical;
 }
 
+/* APPLICATION TYPE RADIO BUTTONS */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.radio-option {
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: #fbfcfe;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s ease;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #26364d;
+}
+
+.radio-option label:hover {
+  border-color: #c8d2df;
+  background: #ffffff;
+}
+
+.radio-option input[type="radio"]:checked + label {
+  border-color: var(--blue);
+  background: #edf4ff;
+  color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(40,104,199,.10);
+}
+
+.radio-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.radio-label-text {
+  font-size: 15px;
+}
+
+.radio-description {
+  font-size: 12px;
+  font-weight: 450;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
 /* CHECKBOXES */
 
 .checkbox-area {
@@ -379,7 +454,11 @@ textarea {
 @media (max-width: 700px) {
 
   .header {
-    padding: 45px 18px 65px;
+    padding: 35px 18px 65px;
+  }
+
+  .logo {
+    max-width: 140px;
   }
 
   .header h1 {
@@ -414,6 +493,10 @@ textarea {
     gap: 0;
   }
 
+  .radio-group {
+    grid-template-columns: 1fr;
+  }
+
   .section {
     margin-top: 30px;
   }
@@ -441,11 +524,17 @@ textarea {
 <header class="header">
   <div class="header-content">
 
-    <div class="badge">
-      ✦ Funding Application
+    <!-- LOGO -->
+    <div class="logo-container">
+      <!-- Replace 'path-to-your-logo.jpg' with the actual URL/path to the image -->
+      <img src="path-to-your-logo.jpg" alt="IFundWomen Logo" class="logo">
     </div>
 
-    <h1>Business Funding Application</h1>
+    <div class="badge">
+      ✦ IFundWomen Funding Application
+    </div>
+
+    <h1>Funding Application</h1>
 
     <p>
       Complete the application below to submit your funding request for consideration.
@@ -470,12 +559,61 @@ textarea {
       action="https://formspree.io/f/myeylozy"
       method="POST">
 
-      <!-- Applicant Information -->
+      <!-- Application Type -->
 
       <section class="section">
 
         <div class="section-heading">
           <div class="section-number">01</div>
+          <h3 class="section-title">Application Type</h3>
+        </div>
+
+        <div class="form-group">
+          <label>
+            What are you applying for? <span class="required">*</span>
+          </label>
+
+          <div class="radio-group">
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="typeBusiness"
+                name="application_type"
+                value="Business"
+                required>
+              <label for="typeBusiness">
+                <span class="radio-icon">🏢</span>
+                <span class="radio-label-text">Business</span>
+                <span class="radio-description">Funding for a business or organization</span>
+              </label>
+            </div>
+
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="typePersonal"
+                name="application_type"
+                value="Personal"
+                required>
+              <label for="typePersonal">
+                <span class="radio-icon">👤</span>
+                <span class="radio-label-text">Personal</span>
+                <span class="radio-description">Funding for personal or individual needs</span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Applicant Information -->
+
+      <section class="section">
+
+        <div class="section-heading">
+          <div class="section-number">02</div>
           <h3 class="section-title">Applicant Information</h3>
         </div>
 
@@ -559,7 +697,7 @@ textarea {
       <section class="section">
 
         <div class="section-heading">
-          <div class="section-number">02</div>
+          <div class="section-number">03</div>
           <h3 class="section-title">Business Information</h3>
         </div>
 
@@ -650,7 +788,7 @@ textarea {
       <section class="section">
 
         <div class="section-heading">
-          <div class="section-number">03</div>
+          <div class="section-number">04</div>
           <h3 class="section-title">Funding Request</h3>
         </div>
 
@@ -685,20 +823,20 @@ textarea {
           <textarea
             id="purpose"
             name="funding_purpose"
-            placeholder="Explain how the requested funding would support your business."
+            placeholder="Explain how the requested funding would support your business or personal needs."
             required></textarea>
         </div>
 
         <div class="form-group">
           <label for="description">
-            Describe Your Business
+            Describe Your Business or Situation
             <span class="required">*</span>
           </label>
 
           <textarea
             id="description"
             name="business_description"
-            placeholder="Tell us about your business, products or services, customers, and goals."
+            placeholder="Tell us about your business, products or services, customers, goals, or your personal situation."
             required></textarea>
         </div>
 
@@ -720,7 +858,7 @@ textarea {
       <section class="section">
 
         <div class="section-heading">
-          <div class="section-number">04</div>
+          <div class="section-number">05</div>
           <h3 class="section-title">Additional Information</h3>
         </div>
 
@@ -824,7 +962,7 @@ textarea {
 </main>
 
 <footer class="footer">
-  © Independent Funding Application
+  © IFundWomen Funding Application
 </footer>
 
 </body>
